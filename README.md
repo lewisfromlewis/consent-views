@@ -2,7 +2,7 @@
 
 ## Aims of the research 
 
-Compared to many other places where people might receive healthcare, it is important, but difficult, to do research in the Intensive Care Unit. This is because patients are very unwell, with a higher proportion of patients with unusually severe disease or unusual responses to disease, and are often unable to have long and detailed conversations abut consent. These are features shared by prehospital acute care, by Emergency Departments, and by emergency response care in other settings. 
+Compared to many other places where people might receive healthcare, it is important, but difficult, to do research in the Intensive Care Unit. This is because patients are very unwell, with a higher proportion of patients with unusually severe disease or unusual responses to disease, and are often unable to have long and detailed conversations abut consent. These are features shared by prehospital acute care, by Emergency Departments, and by emergency response care in other settings.  
 
 In Australia we have a transparent and ethically sound regime of designing, conducting, and supervising research. Despite this, there is little written on public beliefs and attitudes towards research, or even on those of healthcare staff who are not specialised in research design. It is important for the ethical design and review of research, and for public trust in the safety of research, to ensure that we have public justification for the processes designed to support good choices and the learning healthcare system.
 
