@@ -1,0 +1,24 @@
+---
+title: "Attitudes towards conducting health research in Intensive Care Units"
+author: "Lewis Campbell"
+date: "`r Sys.Date()`"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+# Background 
+
+Compared to many other places where people might receive healthcare, it is important, but difficult, to do research in the Intensive Care Unit. This is because patients are very unwell, with a higher proportion of patients with unusually severe disease or unusual responses to disease, and are often unable to have long and detailed conversations abut consent. These are features shared by prehospital acute care, by Emergency Departments, and by emergency response care in other settings.  
+
+In Australia we have a transparent and ethically sound regime of designing, conducting, and supervising research. Despite this, there is little written on public beliefs and attitudes towards research, or even on those of healthcare staff who are not specialised in research design. It is important for the ethical design and review of research, and for public trust in the safety of research, to ensure that we have public justification for the processes designed to support good choices and the learning healthcare system. 
+
+## Survey Design 
+
+Initial discussions centred on processes that are particular to the legal and practice framework in the Northern Territory of Australia (NT). These include an established practice whereby patients who are unable to consent may be enrolled in clinical trials, subject to stringent safeguards modelled after Australian and international norms and supervised by the NT Human Research Ethics Committee (HREC). This supervision was introduced in the wake of law reform in other Australian jurisdictions to clarify the legal position, while NT laws are silent on the subject, neither prohibiting nor explicitly permitting such enrollment. 
+
+In the NT there are few researchers of an Aboriginal or Torres Strait Islander background despite a high proportion of NT healthcare need occurring in Aboriginal and Torres Strait Islander people. This makes the need to clarify population attitudes to research more urgent and more relevant in the NT than elsewhere. The survey was accordingly designed with the help of Aboriginal Liaison Officers (ALOs) and the Interpreter Service, and further refined based on that information to avoid assumptions based on cultural distance, and to build questions that would be appropriate to ask of various groups. It is acknowledged that questions may be interpreted differently according to the context, whether of a person's cultural and personal background, or their current situation, and a plan was established at the outset to present and discuss the findings with the Interpreter Service and ALOs at each stage. 
+
+## 
