@@ -15,10 +15,53 @@ Compared to many other places where people might receive healthcare, it is impor
 
 In Australia we have a transparent and ethically sound regime of designing, conducting, and supervising research. Despite this, there is little written on public beliefs and attitudes towards research, or even on those of healthcare staff who are not specialised in research design. It is important for the ethical design and review of research, and for public trust in the safety of research, to ensure that we have public justification for the processes designed to support good choices and the learning healthcare system. 
 
+# Methods 
+
 ## Survey Design 
 
 Initial discussions centred on processes that are particular to the legal and practice framework in the Northern Territory of Australia (NT). These include an established practice whereby patients who are unable to consent may be enrolled in clinical trials, subject to stringent safeguards modelled after Australian and international norms and supervised by the NT Human Research Ethics Committee (HREC). This supervision was introduced in the wake of law reform in other Australian jurisdictions to clarify the legal position, while NT laws are silent on the subject, neither prohibiting nor explicitly permitting such enrollment. 
 
+## Question formulation and feedback 
+
 In the NT there are few researchers of an Aboriginal or Torres Strait Islander background despite a high proportion of NT healthcare need occurring in Aboriginal and Torres Strait Islander people. This makes the need to clarify population attitudes to research more urgent and more relevant in the NT than elsewhere. The survey was accordingly designed with the help of Aboriginal Liaison Officers (ALOs) and the Interpreter Service, and further refined based on that information to avoid assumptions based on cultural distance, and to build questions that would be appropriate to ask of various groups. It is acknowledged that questions may be interpreted differently according to the context, whether of a person's cultural and personal background, or their current situation, and a plan was established at the outset to present and discuss the findings with the Interpreter Service and ALOs at each stage. 
 
-## 
+## Questions 
+
+The following topic areas were posed, with statements for agreement or disagreement (presented as original design, with mean (SD) of score on a standard Likert scale out of 10):
+
+- Person completing the survey 
+    - Patient, relative, or staff 
+- Risk assessment: If there was research in ICU to find a cure for sepsis, would you be willing to take part? Remember, this is talking about research to find the cure, so there is no guarantee you would benefit, but future generations would benefit. Could you put a mark on the line, or circle one of the statements?
+    - I would be willing / I would not be willing
+    - Only if no risk <-> Willing to take a risk 
+
+- We often don’t know which is the best treatment at a given time. Do you agree with any of these words about usual treatments?
+    - I would be worried that a research project would mean I got worse care in ICU: I would be worried <-> I would not be worried
+    - I would only participate in research, or say yes for a relative, if I thought we would get some benefit out of it: Only if benefit <-> Benefit doesn't matter
+    - I believe that even the best doctors may not know which treatment is the best every time: Doctors always know <-> We need to ask questions 
+- We want people to participate freely in research. Do you agree with any of these words about saying no?
+    - If a doctor asked myself or my family be involved in research, I would find it hard to say no: Easy to say no <-> Hard to say no 
+    - If I were involved in research but I didn't want to continue, I would find it hard to tell the Doctors/Nurses: Easy to tell someone <-> Hard to tell someone 
+    - It is OK to use publicly available information (when the patient left hospital, and whether they passed away, for example birth and death register) without consent and without contacting the family: OK to use <-> Need consent 
+- Imagine we have a new treatment for brain trauma. It seems to be safe but very expensive. It is given immediately when the ambulance arrives, so there is no time to talk in detail about research before it’s given. Do you agree with any of these words about when to have a conversation? 
+    - It is important for the family to be informed before a patient is enrolled in a research study: Have to ask the family first <-> can enroll first if necessary 
+    - It is OK for a doctor or nurse to ask the family or patient for permission even if the patient is very unwell: OK to ask <-> Not OK to ask if very unwell 
+- Research Data is usually kept confidential, and anonymous. We take out all the identifiers (things that can be used to identify you, such as your name or address), and we keep the identifiers safe. Patients or relatives can ask to have all this data destroyed. Unless they ask for this to happen, patient data is normally destroyed after five years. The data is very useful for answering other health questions. Do you agree with any of these words about data? 
+    - I would be willing for my or my relative’s anonymous data to be used in other research later: OK to use <-> Must destroy 
+    - I would be willing for researchers to contact me or my relatives to participate in future unrelated research projects: Willing for researchers to contact me <-> I would not be willing to be contacted 
+    - Is it ok to use the patient’s data to answer the research question even if they pass away: It is OK to use the data <-> it is not OK to use the data 
+- Six months later the patient is asked for a phone interview, to check how well they are going. Instead of speaking in person, for some of the questions the researchers can get it from the hospital notes or from a GP or clinic. 
+    - I would be willing to answer questions six months after being a patient or relative in an ICU: I would be willing to answer questions <-> I would not be willing to answer questions 
+    - Instead of speaking to me in person, I would prefer the researchers to read my notes or phone my doctor: Speak in person <-> Not speak in person 
+- Consent conversations can be quite long. Imagine now that the brain trauma research can only find the answers if it includes people who can’t consent themselves. If the patient wakes up, they are told that they were enrolled, and they can remove their data from the research. If they do not wake up, then their next of kin has that conversation. Do you agree with any of these words about emergency research? 
+    - If the patient is awake, it is OK to start this research with a brief explanation of the research rather than a complex conversation: Brief conversation <-> Complex conversation 
+    - If the patient is unconscious, it is OK to start this research, without asking them first: OK to start <-> Cannot start 
+    - The family should always be told about the research, even if the patient passes away beforehand from a condition that was unrelated to the research: Family should be told all the details <-> Not necessary to be told 
+- Is there anything further you would like to say about research in ICU? (Free text responses)
+
+
+# Results 
+
+```{r echo=FALSE, message=FALSE}
+Views <- readxl::read_xlsx("Views.xlsx", sheet=1)
+```
