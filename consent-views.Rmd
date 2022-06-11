@@ -64,4 +64,5 @@ The following topic areas were posed, with statements for agreement or disagreem
 
 ```{r echo=FALSE, message=FALSE}
 Views <- readxl::read_xlsx("Views.xlsx", sheet=1)
+Views
 ```
