@@ -2,11 +2,14 @@
 title: "Attitudes towards conducting health research in Intensive Care Units"
 author: "Lewis Campbell"
 date: "`r Sys.Date()`"
-output: html_document
+output:
+  pdf_document: default
+  html_document: default
 ---
 
-```{r setup, include=FALSE}
+```{r setup, include=FALSE, message=FALSE }
 knitr::opts_chunk$set(echo = TRUE)
+library(tidyverse)
 ```
 
 # Background 
@@ -62,7 +65,79 @@ The following topic areas were posed, with statements for agreement or disagreem
 
 # Results 
 
+The first summary is of the responses themselves, by question, summarised as a box and whisker plot. 
 ```{r echo=FALSE, message=FALSE}
-Views <- readxl::read_xlsx("Views.xlsx", sheet=1)
-Views
+Views <- readxl::read_xlsx("Views.xlsx", sheet=1) 
+
+Viewslong <- Views %>% 
+    select(-Type, -WillingYN, -Interviewer, -InPerson) %>% 
+    pivot_longer(cols = !ID, names_to = "question", values_to = "score") %>% 
+    mutate(score=score/16.6) %>% 
+    mutate(question = factor(question, levels = question[1:17])) %>% 
+    mutate(ID = as.factor(ID))
+
+summaryplot <- ggplot(Viewslong, aes(x=question, y=score)) +
+    geom_boxplot(aes(fill=question, alpha=0.2, colour = question)) +
+    scale_fill_discrete() +
+    scale_x_discrete(guide = guide_axis(angle = 45))
+
+print(summaryplot)
+    
+```
+
+There are clearly some topics that are well agreed, and others where there is less agreement. Clusters can be identified in the participants, based on how alike they are in their patterns of response to the various questions. These are not visually obvious on first inspection of a graph of answers by participant ID.
+
+```{r, message = FALSE, error = FALSE}
+participantplot <- ggplot(Viewslong, aes(x=question, y=score, group = ID)) +
+    geom_line(aes(colour = as.numeric(ID)), alpha = 0.4) +
+    scale_x_discrete(guide = guide_axis(angle = 45))
+
+print(participantplot)
+
+```
+
+The next stage is to determine whether there are identifiable clusters. If there are, then these can be examined to decide whether the clusters are plausible, or just a figment of the data gathering process. 
+
+```{r}
+Viewclusters <- Views %>% 
+    select(-ID, -Type, -WillingYN, -Interviewer, -InPerson) %>% 
+    kmeans(centers = 2, iter.max = 10, nstart = 1)
+
+Viewclusters$centers
+
+attributed <- tibble("one" = Viewclusters$centers[1,]/16.6,
+                     "two" = Viewclusters$centers[2,]/16.6,
+                     "question" = factor(colnames(Viewclusters$centers), levels = colnames(Viewclusters$centers))) %>% 
+    pivot_longer(!question, names_to = "cluster", values_to = "means")
+
+clusterplot <- ggplot(attributed, 
+                      aes(x=question, y = means, group = cluster, colour = cluster)
+                      ) + 
+           geom_line() +
+    scale_x_discrete(guide = guide_axis(angle = 45))
+print(clusterplot)
+
+
+```
+
+If we look for two clusters, we find them differentiated by the responses indicating that they would be worried about safety of research, would participate only if there were individual benefit, and that publicly available data on a deceased participant should not be used without further consent from the family. These are plausible differences of opinion, and indicates that we should continue to administer questionnaires. 
+
+Another way to look at the clustering is with principal components, which gets a bit Weird Science to explain but basically reduces the information in the dataset into the bits that make up the difference between observations, and the bits that don't matter so much. The principal component of the dataset so far are below.
+
+```{r}
+ViewPCA <- Views %>% 
+    select(-ID, -Type, -WillingYN, -Interviewer, -InPerson) %>% 
+    prcomp(center = TRUE, scale = TRUE)
+
+print(summary(ViewPCA))
+print(ViewPCA)
+```
+
+There is a bit of variability between individual views anyway, so that the biggest influence still only explains under 30% of the variance in scores. The principal components aren't the questions, they're a weighted amount of each of the questions rolled into one. If we pick the three biggest ones we get:
+
+```{r}
+ViewPCAredux <- as_tibble(ViewPCA$x[,1:3])
+kmViewPCA <- kmeans(ViewPCAredux, centers = 2, nstart = 50)
+PCAplot <- fviz_cluster(kmViewPCA, data = ViewPCAredux)
+print(PCAplot)
 ```
