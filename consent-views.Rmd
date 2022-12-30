@@ -70,7 +70,7 @@ The first summary is of the responses themselves, by question, summarised as a b
 Views <- readxl::read_xlsx("Views.xlsx", sheet=1) 
 
 Viewslong <- Views %>% 
-    select(-Type, -WillingYN, -Interviewer, -InPerson) %>% 
+    select(-Type, -WillingYN, -Interviewer, -InPerson, -Qversion, -Comments) %>% 
     pivot_longer(cols = !ID, names_to = "question", values_to = "score") %>% 
     mutate(score=score/16.6) %>% 
     mutate(question = factor(question, levels = question[1:17])) %>% 
@@ -99,8 +99,8 @@ print(participantplot)
 The next stage is to determine whether there are identifiable clusters. If there are, then these can be examined to decide whether the clusters are plausible, or just a figment of the data gathering process. 
 
 ```{r}
-Viewclusters <- Views %>% 
-    select(-ID, -Type, -WillingYN, -Interviewer, -InPerson) %>% 
+Viewclusters <- Views %>%  
+    select(-Type, -WillingYN, -Interviewer, -InPerson, -Qversion, -Comments) %>% 
     kmeans(centers = 2, iter.max = 10, nstart = 1)
 
 Viewclusters$centers
@@ -126,7 +126,7 @@ Another way to look at the clustering is with principal components, which gets a
 
 ```{r}
 ViewPCA <- Views %>% 
-    select(-ID, -Type, -WillingYN, -Interviewer, -InPerson) %>% 
+    select(-Type, -WillingYN, -Interviewer, -InPerson, -Qversion, -Comments) %>% 
     prcomp(center = TRUE, scale = TRUE)
 
 print(summary(ViewPCA))
@@ -138,6 +138,6 @@ There is a bit of variability between individual views anyway, so that the bigge
 ```{r}
 ViewPCAredux <- as_tibble(ViewPCA$x[,1:3])
 kmViewPCA <- kmeans(ViewPCAredux, centers = 2, nstart = 50)
-PCAplot <- fviz_cluster(kmViewPCA, data = ViewPCAredux)
+PCAplot <- factoextra::fviz_cluster(kmViewPCA, data = ViewPCAredux)
 print(PCAplot)
 ```
