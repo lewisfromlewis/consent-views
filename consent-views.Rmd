@@ -3,8 +3,8 @@ title: "Attitudes towards conducting health research in Intensive Care Units"
 author: "Lewis Campbell"
 date: "`r Sys.Date()`"
 output:
-  pdf_document: default
   html_document: default
+  pdf_document: default
 ---
 
 ```{r setup, include=FALSE, message=FALSE }
@@ -67,7 +67,8 @@ The following topic areas were posed, with statements for agreement or disagreem
 
 The first summary is of the responses themselves, by question, summarised as a box and whisker plot. 
 ```{r echo=FALSE, message=FALSE}
-Views <- readxl::read_xlsx("Views.xlsx", sheet=1) 
+# Using imputed values sheet, number 2; the raw entered data with any missing values is in sheet 1
+Views <- readxl::read_xlsx("Views.xlsx", sheet=2) 
 
 Viewslong <- Views %>% 
     select(-Type, -WillingYN, -Interviewer, -InPerson, -Qversion, -Comments) %>% 
