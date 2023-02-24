@@ -10,6 +10,7 @@ output:
 ```{r setup, include=FALSE, message=FALSE }
 knitr::opts_chunk$set(echo = TRUE)
 library(tidyverse)
+library(RColorBrewer)
 ```
 
 # Background 
@@ -91,7 +92,8 @@ There are clearly some topics that are well agreed, and others where there is le
 ```{r, message = FALSE, error = FALSE}
 participantplot <- ggplot(Viewslong, aes(x=question, y=score, group = ID)) +
     geom_line(aes(colour = as.numeric(ID)), alpha = 0.4) +
-    scale_x_discrete(guide = guide_axis(angle = 45))
+    scale_x_discrete(guide = guide_axis(angle = 45)) +
+    scale_colour_viridis_b()
 
 print(participantplot)
 
